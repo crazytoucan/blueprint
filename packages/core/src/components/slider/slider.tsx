@@ -6,8 +6,8 @@
  */
 
 import * as React from "react";
-
 import * as Classes from "../../common/classes";
+import { IMouseEvent, ITouchEvent } from "../../common/reactEvents";
 import { clamp } from "../../common/utils";
 import { CoreSlider, ICoreSliderProps } from "./coreSlider";
 import { Handle } from "./handle";
@@ -72,13 +72,13 @@ export class Slider extends CoreSlider<ISliderProps> {
         );
     }
 
-    protected handleTrackClick(event: React.MouseEvent<HTMLElement>) {
+    protected handleTrackClick(event: IMouseEvent<HTMLElement>) {
         if (this.handle != null) {
             this.handle.beginHandleMovement(event);
         }
     }
 
-    protected handleTrackTouch(event: React.TouchEvent<HTMLElement>) {
+    protected handleTrackTouch(event: ITouchEvent<HTMLElement>) {
         if (this.handle != null) {
             this.handle.beginHandleTouchMovement(event);
         }

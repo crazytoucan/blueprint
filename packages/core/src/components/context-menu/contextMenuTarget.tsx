@@ -7,11 +7,12 @@
 
 import * as React from "react";
 
+import { IMouseEvent } from "../../common/reactEvents";
 import { isFunction, safeInvoke } from "../../common/utils";
 import * as ContextMenu from "./contextMenu";
 
 export interface IContextMenuTarget extends React.Component<any, any> {
-    renderContextMenu(e: React.MouseEvent<HTMLElement>): JSX.Element ;
+    renderContextMenu(e: IMouseEvent<HTMLElement>): JSX.Element ;
     onContextMenuClose?(): void;
 }
 

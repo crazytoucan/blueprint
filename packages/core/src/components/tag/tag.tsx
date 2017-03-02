@@ -8,18 +8,17 @@
 import * as classNames from "classnames";
 import * as PureRender from "pure-render-decorator";
 import * as React from "react";
-
-import { IIntentProps, IProps, removeNonHTMLProps } from "../../common/props";
-import { isFunction } from "../../common/utils";
-
 import * as Classes from "../../common/classes";
+import { IIntentProps, IProps, removeNonHTMLProps } from "../../common/props";
+import { IMouseEvent } from "../../common/reactEvents";
+import { isFunction } from "../../common/utils";
 
 export interface ITagProps extends IProps, IIntentProps, React.HTMLProps<HTMLSpanElement> {
     /**
      * Click handler for remove button.
      * Button will only be rendered if this prop is defined.
      */
-    onRemove?: (e: React.MouseEvent<HTMLSpanElement>) => void;
+    onRemove?: (e: IMouseEvent<HTMLSpanElement>) => void;
 }
 
 @PureRender

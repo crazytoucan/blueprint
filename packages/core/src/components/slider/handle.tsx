@@ -8,11 +8,11 @@
 import * as classNames from "classnames";
 import * as PureRender from "pure-render-decorator";
 import * as React from "react";
-
 import { AbstractComponent } from "../../common/abstractComponent";
 import * as Classes from "../../common/classes";
 import * as Keys from "../../common/keys";
 import { IProps } from "../../common/props";
+import { IKeyboardEvent, IMouseEvent, ITouchEvent } from "../../common/reactEvents";
 import { clamp, safeInvoke } from "../../common/utils";
 
 export interface IHandleProps extends IProps {
@@ -84,18 +84,18 @@ export class Handle extends AbstractComponent<IHandleProps, IHandleState> {
         return value + valueDelta;
     }
 
-    public touchEventClientX(event: TouchEvent | React.TouchEvent<HTMLElement>) {
+    public touchEventClientX(event: TouchEvent | ITouchEvent<HTMLElement>) {
         return event.changedTouches[0].clientX;
     }
 
-    public beginHandleMovement = (event: MouseEvent | React.MouseEvent<HTMLElement>) => {
+    public beginHandleMovement = (event: MouseEvent | IMouseEvent<HTMLElement>) => {
         document.addEventListener("mousemove", this.handleHandleMovement);
         document.addEventListener("mouseup", this.endHandleMovement);
         this.setState({ isMoving: true });
         this.changeValue(this.clientToValue(event.clientX));
     }
 
-    public beginHandleTouchMovement = (event: TouchEvent | React.TouchEvent<HTMLElement>) => {
+    public beginHandleTouchMovement = (event: TouchEvent | ITouchEvent<HTMLElement>) => {
         document.addEventListener("touchmove", this.handleHandleTouchMovement);
         document.addEventListener("touchend", this.endHandleTouchMovement);
         document.addEventListener("touchcancel", this.endHandleTouchMovement);
@@ -142,7 +142,7 @@ export class Handle extends AbstractComponent<IHandleProps, IHandleState> {
         }
     }
 
-    private handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    private handleKeyDown = (event: IKeyboardEvent<HTMLSpanElement>) => {
         const { stepSize, value } = this.props;
         const { which } = event;
         if (which === Keys.ARROW_DOWN || which === Keys.ARROW_LEFT) {
@@ -155,7 +155,7 @@ export class Handle extends AbstractComponent<IHandleProps, IHandleState> {
         }
     }
 
-    private handleKeyUp = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    private handleKeyUp = (event: IKeyboardEvent<HTMLSpanElement>) => {
         if ([Keys.ARROW_UP, Keys.ARROW_DOWN, Keys.ARROW_LEFT, Keys.ARROW_RIGHT].indexOf(event.which) >= 0) {
             safeInvoke(this.props.onRelease, this.props.value);
         }

@@ -7,10 +7,10 @@
 
 import * as classNames from "classnames";
 import * as React from "react";
-
 import { AbstractComponent } from "../../common/abstractComponent";
 import * as Classes from "../../common/classes";
 import { IProps } from "../../common/props";
+import { IReactType } from "../../common/reactEvents";
 
 export interface ICollapseProps extends IProps {
     /**
@@ -18,7 +18,7 @@ export interface ICollapseProps extends IProps {
      * Useful when rendering a `Collapse` inside a `<table>`, for instance.
      * @default "div"
      */
-    component?: React.ReactType;
+    component?: IReactType;
 
     /**
      * Whether the component is open or closed.

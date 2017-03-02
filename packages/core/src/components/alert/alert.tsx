@@ -7,9 +7,9 @@
 
 import * as classNames from "classnames";
 import * as React from "react";
-
-import { AbstractComponent, Classes, Intent, IProps } from "../../common";
 import * as Errors from "../../common/errors";
+import { IMouseEvent } from "../../common/reactEvents";
+import { AbstractComponent, Classes, IProps, Intent } from "../../common";
 import { Button } from "../button/buttons";
 import { Dialog } from "../dialog/dialog";
 
@@ -47,12 +47,12 @@ export interface IAlertProps extends IProps {
     /**
      * Handler invoked when the cancel button is clicked.
      */
-    onCancel?(e: React.MouseEvent<HTMLButtonElement>): void;
+    onCancel?(e: IMouseEvent<HTMLButtonElement>): void;
 
     /**
      * Handler invoked when the confirm button is clicked.
      */
-    onConfirm(e: React.MouseEvent<HTMLButtonElement>): void;
+    onConfirm(e: IMouseEvent<HTMLButtonElement>): void;
  }
 
 export class Alert extends AbstractComponent<IAlertProps, {}> {

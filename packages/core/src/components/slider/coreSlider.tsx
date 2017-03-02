@@ -8,10 +8,10 @@
 import * as classNames from "classnames";
 import * as PureRender from "pure-render-decorator";
 import * as React from "react";
-
 import { AbstractComponent } from "../../common/abstractComponent";
 import * as Classes from "../../common/classes";
 import { IProps } from "../../common/props";
+import { IMouseEvent, ITouchEvent } from "../../common/reactEvents";
 import { approxEqual, isFunction } from "../../common/utils";
 
 export interface ICoreSliderProps extends IProps {
@@ -109,8 +109,8 @@ export abstract class CoreSlider<P extends ICoreSliderProps> extends AbstractCom
     protected abstract renderHandles(): JSX.Element | JSX.Element[];
     protected abstract renderFill(): JSX.Element;
     /** An event listener invoked when the user clicks on the track outside a handle */
-    protected abstract handleTrackClick(event: React.MouseEvent<HTMLElement>): void;
-    protected abstract handleTrackTouch(event: React.TouchEvent<HTMLElement>): void;
+    protected abstract handleTrackClick(event: IMouseEvent<HTMLElement>): void;
+    protected abstract handleTrackTouch(event: ITouchEvent<HTMLElement>): void;
 
     protected formatLabel(value: number): React.ReactChild {
         const { renderLabel } = this.props;

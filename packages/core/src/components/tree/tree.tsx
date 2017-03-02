@@ -7,13 +7,13 @@
 
 import * as classNames from "classnames";
 import * as React from "react";
-
 import * as Classes from "../../common/classes";
 import { IProps } from "../../common/props";
+import { IMouseEvent } from "../../common/reactEvents";
 import { isFunction } from "../../common/utils";
 import { ITreeNode, TreeNode } from "./treeNode";
 
-export type TreeEventHandler = (node: ITreeNode, nodePath: number[], e: React.MouseEvent<HTMLElement>) => void;
+export type TreeEventHandler = (node: ITreeNode, nodePath: number[], e: IMouseEvent<HTMLElement>) => void;
 
 export interface ITreeProps extends IProps {
    /**

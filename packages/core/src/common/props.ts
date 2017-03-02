@@ -6,8 +6,8 @@
  */
 
 import * as React from "react";
-
 import { Intent } from "./intent";
+import { IEventHandler, IFormEvent, IMouseEvent } from "./reactEvents";
 
 export type HTMLInputProps = React.HTMLProps<HTMLInputElement>;
 
@@ -36,7 +36,7 @@ export interface IActionProps extends IIntentProps, IProps {
     iconName?: string;
 
     /** Click event handler. */
-    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+    onClick?: (event: IMouseEvent<HTMLElement>) => void;
 
     /** Action text. */
     text?: string;
@@ -57,7 +57,7 @@ export interface IControlledProps {
     defaultValue?: string;
 
     /** Change event handler. Use `event.target.value` for new value. */
-    onChange?: React.FormEventHandler<HTMLElement>;
+    onChange?: IEventHandler<IFormEvent<HTMLElement>>;
 
     /** Form value of the input, for controlled usage. */
     value?: string;

@@ -10,9 +10,9 @@
 
 import * as classNames from "classnames";
 import * as React from "react";
-
 import * as Classes from "../../common/classes";
 import { IProps, removeNonHTMLProps } from "../../common/props";
+import { IEventHandler, IFormEvent } from "../../common/reactEvents";
 import { safeInvoke } from "../../common/utils";
 
 export interface IControlProps extends IProps {
@@ -32,7 +32,7 @@ export interface IControlProps extends IProps {
     label?: string;
 
     /** Event handler invoked when input value is changed. */
-    onChange?: React.FormEventHandler<HTMLInputElement>;
+    onChange?: IEventHandler<IFormEvent<HTMLInputElement>>;
 }
 
 /** Base Component class for all Controls */

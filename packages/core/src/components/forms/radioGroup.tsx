@@ -6,11 +6,11 @@
  */
 
 import * as React from "react";
-
 import { AbstractComponent } from "../../common/abstractComponent";
 import * as Classes from "../../common/classes";
 import * as Errors from "../../common/errors";
 import { IOptionProps, IProps } from "../../common/props";
+import { IFormEvent } from "../../common/reactEvents";
 import { Radio } from "./controls";
 
 export interface IRadioGroupProps extends IProps {
@@ -33,7 +33,7 @@ export interface IRadioGroupProps extends IProps {
      * Callback invoked when the currently selected radio changes.
      * This prop is required because this component currently supports only controlled usage.
      */
-    onChange: (event: React.FormEvent<HTMLElement>) => void;
+    onChange: (event: IFormEvent<HTMLElement>) => void;
 
     /**
      * Array of options to render in the group.

@@ -7,8 +7,8 @@
 
 import * as classNames from "classnames";
 import * as React from "react";
-
 import * as Classes from "../../common/classes";
+import { IMouseEvent } from "../../common/reactEvents";
 import { safeInvoke } from "../../common/utils";
 import { Collapse } from "../collapse/collapse";
 
@@ -67,11 +67,11 @@ export interface ITreeNodeProps extends ITreeNode {
     contentRef?: (node: TreeNode, element: HTMLDivElement | null) => void;
     depth: number;
     key?: string | number;
-    onClick?: (node: TreeNode, e: React.MouseEvent<HTMLDivElement>) => void;
-    onCollapse?: (node: TreeNode, e: React.MouseEvent<HTMLSpanElement>) => void;
-    onContextMenu?: (node: TreeNode, e: React.MouseEvent<HTMLDivElement>) => void;
-    onDoubleClick?: (node: TreeNode, e: React.MouseEvent<HTMLDivElement>) => void;
-    onExpand?: (node: TreeNode, e: React.MouseEvent<HTMLSpanElement>) => void;
+    onClick?: (node: TreeNode, e: IMouseEvent<HTMLDivElement>) => void;
+    onCollapse?: (node: TreeNode, e: IMouseEvent<HTMLSpanElement>) => void;
+    onContextMenu?: (node: TreeNode, e: IMouseEvent<HTMLDivElement>) => void;
+    onDoubleClick?: (node: TreeNode, e: IMouseEvent<HTMLDivElement>) => void;
+    onExpand?: (node: TreeNode, e: IMouseEvent<HTMLSpanElement>) => void;
     path: number[];
 }
 

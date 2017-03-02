@@ -7,10 +7,10 @@
 
 import * as classNames from "classnames";
 import * as React from "react";
-
 import * as Classes from "../../common/classes";
 import * as Keys from "../../common/keys";
 import { IActionProps } from "../../common/props";
+import { IKeyboardEvent } from "../../common/reactEvents";
 import { safeInvoke } from "../../common/utils";
 import { Spinner } from "../spinner/spinner";
 
@@ -93,7 +93,7 @@ export abstract class AbstractButton<T> extends React.Component<React.HTMLProps<
     // that "Type argument candidate 'KeyboardEvent<T>' is not a valid type
     // argument because it is not a supertype of candidate
     // 'KeyboardEvent<HTMLElement>'."
-    protected handleKeyDown = (e: React.KeyboardEvent<any>) => {
+    protected handleKeyDown = (e: IKeyboardEvent<any>) => {
         if (isKeyboardClick(e.which)) {
             e.preventDefault();
             if (e.which !== this.currentKeyDown) {
@@ -104,7 +104,7 @@ export abstract class AbstractButton<T> extends React.Component<React.HTMLProps<
         safeInvoke(this.props.onKeyDown, e);
     }
 
-    protected handleKeyUp = (e: React.KeyboardEvent<any>) => {
+    protected handleKeyUp = (e: IKeyboardEvent<any>) => {
         if (isKeyboardClick(e.which)) {
             this.setState({ isActive: false });
             this.buttonRef.click();

@@ -7,9 +7,9 @@
 
 import * as classNames from "classnames";
 import * as React from "react";
-
 import * as Classes from "../../common/classes";
 import * as Errors from "../../common/errors";
+import { IMouseEvent, ITouchEvent } from "../../common/reactEvents";
 import { isFunction } from "../../common/utils";
 import { CoreSlider, ICoreSliderProps } from "./coreSlider";
 import { Handle } from "./handle";
@@ -83,7 +83,7 @@ export class RangeSlider extends CoreSlider<IRangeSliderProps> {
         ));
     }
 
-    protected handleTrackClick(event: React.MouseEvent<HTMLElement>) {
+    protected handleTrackClick(event: IMouseEvent<HTMLElement>) {
         this.handles.reduce((min, handle) => {
             // find closest handle to the mouse position
             const value = handle.clientToValue(event.clientX);
@@ -91,7 +91,7 @@ export class RangeSlider extends CoreSlider<IRangeSliderProps> {
         }).beginHandleMovement(event);
     }
 
-    protected handleTrackTouch(event: React.TouchEvent<HTMLElement>) {
+    protected handleTrackTouch(event: ITouchEvent<HTMLElement>) {
         this.handles.reduce((min, handle) => {
             // find closest handle to the touch position
             const value = handle.clientToValue(handle.touchEventClientX(event));
